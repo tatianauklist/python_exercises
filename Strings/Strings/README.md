@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-# python_exercises
-📖 A collection of coding exercises and challenges documenting my programming journey. Organized by topic for easy reference.
-
-## Section 1:
-🧵 [Strings](https://github.com/tatianauklist/python_exercises/tree/main/Strings)
-
-🚦 Conditionals 
-
-📘 Functions
-=======
 # 🧵 String Manipulation Exercises
 
 A collection of Python exercises focused on string manipulation and processing, completed as part of my learning journey through the MOOC.fi Introduction to Programming course.
@@ -78,4 +67,3 @@ This is personal learning code. Feel free to use for educational purposes.
 ---
 
 *Last Updated: October 2025*
->>>>>>> c578644 (Editing files)
