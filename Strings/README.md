@@ -36,14 +36,6 @@ Core Features
 - 🔍 Search entries by keywords
 - 💾 Save and load entries from file
 
-#### Skills Practiced
-
-String formatting and manipulation
-File I/O operations
-User input validation
-Working with timestamps
-Menu-driven program design
-Text searching and filtering
 
 ## 🚀 How to Run
 
