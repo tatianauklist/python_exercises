@@ -21,11 +21,11 @@ These exercises reinforce fundamental string operations in Python, including:
 ### Intermediate Challenges
 4. **Word Counter** 🔢 - Counts words in sentences with proper whitespace handling ✅
 5. **Censorship Tool** 🚫 - Replaces specified words with asterisks ✅ 
-6. **Password Validator** 🔐 - Checks password strength based on multiple criteria 🚧 
+6. **Password Validator** 🔐 - Checks password strength based on multiple criteria ✅ 
 
 ### Mini Projects
 7. **Text-Based Adventure Start Screen** 🎮 - Creates personalized game intro with character codes 🚧 
-8. **Simple Cipher** 🔒 - Implements basic Caesar cipher encryption 🚧 
+8. **Simple Cipher** 🔒 - Implements basic Caesar cipher encryption ✅ 
 
 ## 🚀 How to Run
 
@@ -67,4 +67,3 @@ This is personal learning code. Feel free to use for educational purposes.
 ---
 
 *Last Updated: October 2025*
->>>>>>> c578644 (Editing files)
