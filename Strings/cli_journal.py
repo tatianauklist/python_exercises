@@ -13,6 +13,20 @@ def writeNewJournal ():
     with open("myjournal.txt","a") as f:
         f.write(journalEntry + "\n")
         f.close()
+def viewAllEntries():
+    with open("myjournal.txt","r") as f:
+        print(f.read())
+        f.close()
+def searchEntries():
+    search = input("What would you like to look for? ")
+    index = 0
+    with open("myjournal.txt","r") as f:
+        for line in f:
+            line = line.rstrip()
+            if line.find(search) == -1:
+                continue
+            print(line)
+    f.close()
 
 
 
@@ -27,6 +41,10 @@ while True:
     # Write new journal
     if choice == 1:
         writeNewJournal()
+    elif choice == 2:
+        viewAllEntries()
+    elif choice == 3:
+        searchEntries()
     else:
         break
 
