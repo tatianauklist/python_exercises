@@ -32,8 +32,8 @@ This repository tracks my progress as I move from Python fundamentals into build
 ## Progress Timeline
 
 - **Week 1-2:** Completed MOOC Python fundamentals, focused on functions
-- **Week 3:** Started building portfolio projects with Contact Book
-- *(Update as you continue)*
+- **Week 3:** Contact Book project development
+
 
 ## About
 
