@@ -5,4 +5,4 @@
 🧵 [Strings](https://github.com/tatianauklist/python_exercises/tree/main/Strings)
 
 ## Section 2:
-📘 [Projects](https://github.com/tatianauklist/python_exercises/tree/main/Projects)
+📘 [Projects](https://github.com/tatianauklist/python_exercises/tree/main/projects)
