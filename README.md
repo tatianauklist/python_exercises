@@ -4,6 +4,5 @@
 ## Section 1:
 🧵 [Strings](https://github.com/tatianauklist/python_exercises/tree/main/Strings)
 
-🚦 Conditionals 
-
-📘 Functions
+## Section 2:
+📘 [Projects](https://github.com/tatianauklist/python_exercises/tree/main/Projects)
