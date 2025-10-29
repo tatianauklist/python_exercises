@@ -27,13 +27,13 @@ These exercises reinforce fundamental string operations in Python, including:
 7. **Text-Based Adventure Start Screen** 🎮 - Creates personalized game intro with character codes ✅  
 8. **Simple Cipher** 🔒 - Implements basic Caesar cipher encryption ✅
 
-### 📝 Weekend Sprint Project: Personal Journal CLI
+### 📝 Weekend Sprint Project: Personal Journal CLI ✅
 A command-line journal application that ties together all the string manipulation concepts learned. Users can write, view, search, and manage journal entries with persistent file storage.
 Core Features
 
-- ✍️ Write new entries with automatic timestamps
-- 👀 View all saved entries
-- 🔍 Search entries by keywords
+- ✍️ Write new entries with automatic timestamps 
+- 👀 View all saved entries 
+- 🔍 Search entries by keywords 
 - 💾 Save and load entries from file
 
 
