@@ -24,7 +24,7 @@ This repository tracks my progress as I move from Python fundamentals into build
 
 ## Technologies & Tools
 
-- Python 3.x
+- Python 3.13
 - Git & GitHub for version control
 - JSON for data storage
 - Command-line interface development
