@@ -39,7 +39,7 @@ This repository tracks my progress as I move from Python fundamentals into build
 
 I'm a self-taught developer who learns best by building things that break, fixing them, and understanding why they broke in the first place.
 
-After completing Python fundamentals, I realized I was just memorizing syntax without really *getting it*. So I shifted to project-based learning - tackling real-world problems from scratch with no hand-holding, just documentation and determination.
+After completing Python fundamentals, I realized I was just memorizing syntax without really *getting it*. So I shifted to project-based learning - tackling real-world problems from scratch with no hand-holding, just documentation, determination and AI clarifying some topics.
 
 This repository documents that progression. Each project represents a deliberate step up in complexity and a problem I didn't quite know how to solve when I started. Some of the early code makes me cringe now (which means I'm learning). The goal isn't perfection - it's momentum, genuine understanding, and building functional software that actually works.
 
