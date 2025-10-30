@@ -1,3 +1,9 @@
+import json
+
+def loadData():
+    with open("contact_book.json","r") as fp:
+        contactBook = json.load(fp)
+        return(contactBook)
 def menu():
     menuOptions = input("What would you like to do today? ")
     options = menuOptions.lower()
@@ -9,7 +15,7 @@ def addContacts():
         contactMethod = input("What is the contact method you're entering? ")
         contactInfo = input("What is the contact number or email you would like to save? ")
         contactBook[contactName] = {"Preferred Method": contactMethod, contactMethod: contactInfo} 
-        additionalContacts = input("Would you like to add anymore contact information? ")
+        additionalContacts = input("Would you like to add any more contact information? ")
         additionalContacts = additionalContacts.lower()
     if "yes" in additionalContacts:
         additionalMethods = input("Please input any additional contact information for the person: ")
@@ -17,6 +23,7 @@ def addContacts():
     
 
 contactBook = {}
+contactBook = loadData()
 
 user_choice = menu()
 
@@ -27,10 +34,13 @@ user_wants_more = user_wants_more.lower()
 
 while user_wants_more == "yes":
     addContacts()
-    user_wants_more = input("Would you like to add more contacts? ")
+    user_wants_more = input("Would you like to add more contacts to your book? ")
     user_wants_more = user_wants_more.lower()
 
-print(contactBook)
+with open("contact_book.json","w") as fp:
+    json.dump(contactBook,fp)
+    
+
 
 
 
