@@ -11,11 +11,14 @@ A command-line contact management system for storing and organizing contact info
 
 **Status:** In Progress
 
-### 2. CRM
-A command-line contact management system for storing and organizing contact information.
+### 2. CRM System
+A lightweight command-line CRM built with Python and SQLite for managing organizations and contacts. Features include organization tracking (name, industry, website, notes), contact management with primary contact designation, and relational database structure.
 
-**Key Skills:** Nested dictionaries, functions, loops, user input handling, database connections
+**Key Skills:** Database design, SQL operations, relational data modeling, user input handling, functions
 
+Tech Stack: Python 3, SQLite3
+
+_Note: This is an iterative project currently in development, with plans to expand it into a full end-to-end CRM solution._
 
 ---
 
@@ -26,6 +29,7 @@ This repository tracks my progress as I move from Python fundamentals into build
 - Functions and code organization
 - User interaction and input validation
 - File I/O and data persistence
+- Database integration and SQL
 - Problem-solving through practical applications
 
 ## Technologies & Tools
@@ -33,6 +37,7 @@ This repository tracks my progress as I move from Python fundamentals into build
 - Python 3.13
 - Git & GitHub for version control
 - JSON for data storage
+- SQLite for relational databases
 - Command-line interface development
 
 ## Progress Timeline
