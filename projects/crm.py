@@ -29,8 +29,6 @@ def loadData():
     sqlite3Connection.close()
     return("Database Initiated")
     
-    
-
 def addOrganization():
     sqlite3Connection = sqlite3.Connection("crm_database.db")
     cursor = sqlite3Connection.cursor()
@@ -91,12 +89,6 @@ def addContacts():
     conn.commit()
     conn.close()
     print("Contact successfully added!")
-            
-###def deleteOrganization():
-
-###def deleteContact():
-
-###def updateContact():
 
 def searchCRM():
     conn = sqlite3.Connection("crm_database.db")
@@ -116,21 +108,65 @@ def searchCRM():
         results = cursor.fetchall()
         for row in results:
             print(row)
+    conn.close()
 
+def updateCRM():
+    conn = sqlite3.Connection("crm_database.db")
+    cursor = conn.cursor()
+    updateTable = input("Would you like to update an organization or contact? ").lower().strip()
+    if "organization" in updateTable:
+        orgName = input("Organization you would like to update: ")
+        print("Searching...")
+        cursor.execute('''SELECT organizations.* FROM organizations WHERE LOWER(organizations.name) LIKE (?)''',(f"%{orgName}%",))
+        results = cursor.fetchall()
+        print(results)
+        orgUpdate = int(input("Please choose what part of the organization you would like to edit.\n1.Name\n2.Industry\n3.Website\n4.Notes\n"))
+        updateWith = input("Updated information: ")
+        if orgUpdate == 1:
+            cursor.execute('''UPDATE organizations SET name=(?) WHERE organizations.name LIKE (?)''',(updateWith,f"%{orgName}%"))
+            conn.commit()
+            cursor.execute('''SELECT organizations.* FROM organizations WHERE LOWER(organizations.name) LIKE (?)''',(f"%{orgName}%",))
+            results = cursor.fetchall()
+            print(results)
+        elif orgUpdate == 2:
+            cursor.execute('''UPDATE organizations SET industry=(?) WHERE LOWER(organizations.name) LIKE (?)''',(updateWith,f"%{orgName}%"))
+            conn.commit()
+            cursor.execute('''SELECT organizations.* FROM organizations WHERE LOWER(organizations.name) LIKE (?)''',(f"%{orgName}%",))
+            results = cursor.fetchall()
+            print(results)
+        elif orgUpdate == 3:
+            cursor.execute('''UPDATE organizations SET website=(?) WHERE LOWER(organizations.name) LIKE (?)''',(updateWith,f"%{orgName}%"))
+            conn.commit()
+            cursor.execute('''SELECT organizations.* FROM organizations WHERE LOWER(organizations.name) LIKE (?)''',(f"%{orgName}%",))
+            results = cursor.fetchall()
+            print(results)
+        elif orgUpdate == 4:
+            cursor.execute('''UPDATE organizations SET notes=(?) WHERE LOWER(organizations.name) LIKE (?)''',(updateWith,f"%{orgName}%"))
+            conn.commit()
+            cursor.execute('''SELECT organizations.* FROM organizations WHERE LOWER(organizations.name) LIKE (?)''',(f"%{orgName}%",))
+            results = cursor.fetchall()
+            print(results)
+        else: 
+            print("Not a valid entry...")
+        
 
-    
+###def deleteOrganization():
 
+###def deleteContact():
 
-
-
-## menu 
+## main app function
 database = loadData()
 print(database)
-option = input("\nWelcome to your CRM\nWhat can I help you with today? ").lower().strip()
-if "add organization" in option:
-    addOrganization()
-elif "add contact" in option:
-    addContacts()
-elif "search" in option:
-    searchCRM()
+while True: 
+    option = input("\nWelcome to your CRM\nWhat can I help you with today? ").lower().strip()
+    if "add organization" in option:
+        addOrganization()
+    elif "add contact" in option:
+        addContacts()
+    elif "search" in option:
+        searchCRM()
+    elif "update" in option:
+        updateCRM()
+    elif "exit" in option:
+        break 
 print("Thanks come again!")
