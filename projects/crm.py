@@ -46,10 +46,11 @@ def addOrganization():
         orgNotes = input("Notes: ")
     sql_statement = '''INSERT INTO organizations(name, industry, website, notes) VALUES (?,?,?,?)'''
     cursor.execute(sql_statement,(orgName,orgIndustry,orgWebsite,orgNotes))
+    newOrgID = cursor.lastrowid
     sqlite3Connection.commit()
     print("Organization added successfully\nClosing connection...")
     sqlite3Connection.close()
-    return("\nConnection closed")
+    return(f"{orgName}: {newOrgID}")
     
 def addContacts():
     conn = sqlite3.Connection("crm_database.db")
@@ -81,17 +82,40 @@ def addContacts():
         orgID = int(input("Enter the Organization ID: "))
         cursor.execute(sqlStatement,(contactName,contactEmail,contactPhone,isPrimary,orgID))
     else: 
-        print("Organization not found. Would you like to add in an organization? ")
-    
-
-
+        addOrg = input("Organization not found. Would you like to add in an organization? ")
+        if "yes" in addOrg:
+            newOrgID = addOrganization()
+        else:
+            newOrgID = None
+    cursor.execute(sqlStatement,(contactName,contactEmail,contactPhone,newOrgID,isPrimary))
+    conn.commit()
+    conn.close()
+    print("Contact successfully added!")
+            
 ###def deleteOrganization():
 
 ###def deleteContact():
 
 ###def updateContact():
 
-###def searchCRM():
+def searchCRM():
+    conn = sqlite3.Connection("crm_database.db")
+    cursor = conn.cursor()
+    searchParam = input("Would you like to search by contact or by organization? ").lower().strip()
+    if "organization" in searchParam:
+        orgName = input("Organization Name: ")
+        sqlStatement = '''SELECT organizations.*, COUNT(contacts.id) FROM organizations LEFT JOIN contacts on organizations.id = contacts.organizationID WHERE LOWER(organizations.name) LIKE (?)'''
+        cursor.execute(sqlStatement,(f"%{orgName}%",))
+        results = cursor.fetchall()
+        for row in results:
+            print(row)
+    else:
+        contactName = input("Contact Name: ")
+        sqlStatement = '''SELECT contacts.*, organizations.name FROM contacts LEFT JOIN organizations on contacts.organizationID = organizations.id WHERE LOWER(contacts.name) LIKE (?)'''
+        cursor.execute(sqlStatement,(f"%{contactName}%",))
+        results = cursor.fetchall()
+        for row in results:
+            print(row)
 
 
     
@@ -102,9 +126,11 @@ def addContacts():
 ## menu 
 database = loadData()
 print(database)
-option = input("\nWelcome to your CRM\nWhat can I help you with today? ").lower()
-if option == "add organization":
+option = input("\nWelcome to your CRM\nWhat can I help you with today? ").lower().strip()
+if "add organization" in option:
     addOrganization()
-elif option == "add contact":
+elif "add contact" in option:
     addContacts()
-print(database)
+elif "search" in option:
+    searchCRM()
+print("Thanks come again!")
