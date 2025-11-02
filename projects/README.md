@@ -11,6 +11,12 @@ A command-line contact management system for storing and organizing contact info
 
 **Status:** In Progress
 
+### 2. CRM
+A command-line contact management system for storing and organizing contact information.
+
+**Key Skills:** Nested dictionaries, functions, loops, user input handling, database connections
+
+
 ---
 
 This repository tracks my progress as I move from Python fundamentals into building complete, functional applications. Each project builds on concepts from previous work while introducing new challenges.
@@ -33,6 +39,7 @@ This repository tracks my progress as I move from Python fundamentals into build
 
 - **Week 1-2:** Completed MOOC Python fundamentals, focused on functions
 - **Week 3:** Contact Book project development
+- **Week 4:** CRM project development (CLI interface)
 
 
 ## About
