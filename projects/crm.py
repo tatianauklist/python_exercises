@@ -1,4 +1,3 @@
-import json
 import sqlite3
 
 
@@ -92,67 +91,40 @@ def addContacts():
 
 def searchCRM():
     conn = sqlite3.Connection("crm_database.db")
-    cursor = conn.cursor()
     searchParam = input("Would you like to search by contact or by organization? ").lower().strip()
-    if "organization" in searchParam:
-        orgName = input("Organization Name: ")
-        sqlStatement = '''SELECT organizations.*, COUNT(contacts.id) FROM organizations LEFT JOIN contacts on organizations.id = contacts.organizationID WHERE LOWER(organizations.name) LIKE (?)'''
-        cursor.execute(sqlStatement,(f"%{orgName}%",))
-        results = cursor.fetchall()
-        for row in results:
-            print(row)
-    else:
-        contactName = input("Contact Name: ")
-        sqlStatement = '''SELECT contacts.*, organizations.name FROM contacts LEFT JOIN organizations on contacts.organizationID = organizations.id WHERE LOWER(contacts.name) LIKE (?)'''
-        cursor.execute(sqlStatement,(f"%{contactName}%",))
-        results = cursor.fetchall()
-        for row in results:
-            print(row)
+    name = input("Organization or Contact Name: ")
+    results = searchSomething(conn,name,searchParam)
+    for row in results:
+        print(f"{row}")
     conn.close()
 
 def updateCRM():
     conn = sqlite3.Connection("crm_database.db")
-    cursor = conn.cursor()
-    updateTable = input("Would you like to update an organization or contact? ").lower().strip()
-    if "organization" in updateTable:
-        orgName = input("Organization you would like to update: ")
-        print("Searching...")
-        cursor.execute('''SELECT organizations.* FROM organizations WHERE LOWER(organizations.name) LIKE (?)''',(f"%{orgName}%",))
-        results = cursor.fetchall()
-        print(results)
-        orgUpdate = int(input("Please choose what part of the organization you would like to edit.\n1.Name\n2.Industry\n3.Website\n4.Notes\n"))
-        updateWith = input("Updated information: ")
-        if orgUpdate == 1:
-            cursor.execute('''UPDATE organizations SET name=(?) WHERE organizations.name LIKE (?)''',(updateWith,f"%{orgName}%"))
-            conn.commit()
-            cursor.execute('''SELECT organizations.* FROM organizations WHERE LOWER(organizations.name) LIKE (?)''',(f"%{orgName}%",))
-            results = cursor.fetchall()
-            print(results)
-        elif orgUpdate == 2:
-            cursor.execute('''UPDATE organizations SET industry=(?) WHERE LOWER(organizations.name) LIKE (?)''',(updateWith,f"%{orgName}%"))
-            conn.commit()
-            cursor.execute('''SELECT organizations.* FROM organizations WHERE LOWER(organizations.name) LIKE (?)''',(f"%{orgName}%",))
-            results = cursor.fetchall()
-            print(results)
-        elif orgUpdate == 3:
-            cursor.execute('''UPDATE organizations SET website=(?) WHERE LOWER(organizations.name) LIKE (?)''',(updateWith,f"%{orgName}%"))
-            conn.commit()
-            cursor.execute('''SELECT organizations.* FROM organizations WHERE LOWER(organizations.name) LIKE (?)''',(f"%{orgName}%",))
-            results = cursor.fetchall()
-            print(results)
-        elif orgUpdate == 4:
-            cursor.execute('''UPDATE organizations SET notes=(?) WHERE LOWER(organizations.name) LIKE (?)''',(updateWith,f"%{orgName}%"))
-            conn.commit()
-            cursor.execute('''SELECT organizations.* FROM organizations WHERE LOWER(organizations.name) LIKE (?)''',(f"%{orgName}%",))
-            results = cursor.fetchall()
-            print(results)
-        else: 
-            print("Not a valid entry...")
+    searchParam = input("Would you like to update an organization or contact? ").lower().strip()
+    name = input("Name of the Organization or contact you would like to update: ")
+    results = searchSomething(conn,name,searchParam)
+    for row in results:
+        print(f"{row}")
+    
+
         
 
-###def deleteOrganization():
+def searchSomething(conn,name,searchParam):
+    cursor = conn.cursor()
+    if "organization" in searchParam:
+        sqlStatement = '''SELECT organizations.*,COUNT(contacts.id) FROM organizations LEFT JOIN contacts on organizations.id = contacts.organizationID WHERE LOWER(organizations.name) LIKE (?)'''
+        cursor.execute(sqlStatement,(f"%{name}%",))
+        results = cursor.fetchall()
+        return(results)
+    else:
+        sqlStatement = '''SELECT contacts.*, organizations.name FROM contacts LEFT JOIN organizations on contacts.organizationID = organizations.id WHERE LOWER(contacts.name) LIKE (?)'''
+        cursor.execute(sqlStatement,(f"%{name}%",))
+        results = cursor.fetchall()
+        return(results)
 
-###def deleteContact():
+
+
+
 
 ## main app function
 database = loadData()
